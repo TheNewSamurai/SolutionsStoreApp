@@ -1,0 +1,11 @@
+This application is to demonstrate the Motorola Device Capabilities enabled through RhoElements/Rhodes
+
+Currently Barcode scanning and Sync is working on the ET1
+
+Products:
+	-Scan to Search: This will turn on the camera for scanning, if a barcode matches a db entry the entry will be shown.
+
+Clients:
+	-Currently sync is disabled uncomment clients.rb to enable.
+
+Same code will be tested on an MC65
