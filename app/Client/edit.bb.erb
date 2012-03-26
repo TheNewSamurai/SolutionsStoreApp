@@ -1,0 +1,39 @@
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+    <%= link_to "Back", :action => :show, :id => @client.object %>
+    <h1>Edit <%= @client.first%></h1>
+    <%= link_to "Delete", :action => :delete, :id => @client.object %>
+  </div>
+
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :update %>">
+      <input type="hidden" name="id" value="<%= @client.object %>"/>
+      <table>
+          
+          <tr>
+              <td class="itemLabel">First: </td>
+              <td class="itemValue"><input type="text" name="client[first]" value="<%= @client.first %>"/></td>
+          </tr>
+          
+          <tr>
+              <td class="itemLabel">Last: </td>
+              <td class="itemValue"><input type="text" name="client[last]" value="<%= @client.last %>"/></td>
+          </tr>
+          
+          <tr>
+              <td class="itemLabel">Phone: </td>
+              <td class="itemValue"><input type="text" name="client[phone]" value="<%= @client.phone %>"/></td>
+          </tr>
+          
+          <tr>
+              <td class="itemLabel">Location: </td>
+              <td class="itemValue"><input type="text" name="client[location]" value="<%= @client.location %>"/></td>
+          </tr>
+          
+      </table>
+      <input type="submit" value="Update"/>
+    </form>
+  </div>
+
+</div>

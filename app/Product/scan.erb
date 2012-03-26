@@ -1,0 +1,34 @@
+<div data-role="page">
+
+<!--<script type="text/javascript">
+function enableBarcode() {
+ scanner.enable();
+ alert("ENABLED");
+ scanner.decodeEvent = 'checkPrice(%json)'; 
+}
+
+function checkPrice(jsonObject) {
+  var scannedUPC = jsonObject.data;
+  alert(scanendUPC);
+}
+</script>-->
+
+  <div data-role="header" data-position="inline">
+    <h1>Products</h1>
+    <a href="<%= url_for :action => :index %>" class="ui-btn-left" data-icon="reverse" data-direction="reverse" <%= "data-ajax='false'" if is_bb6 %>>
+      Back
+    </a>
+    <a href="<%= url_for :action => :new %>" class="ui-btn-right" data-icon="plus">
+      New
+    </a>
+  </div>
+
+  <div data-role="content">
+    <ul data-role="listview">
+      <a href="<%= url_for :action => :define_scanner %>">Enable Scanner</a><br>    <!--Call to enable the scanner-->
+      <!--<button onclick="enableBarcode();">Enable Scanner</button>-->
+      <a href="<%= url_for :action => :index %>">Take Barcode</a>
+    </ul>
+  </div>
+
+</div>

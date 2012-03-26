@@ -1,0 +1,41 @@
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+    <h1>Edit <%= @client.first %></h1>
+    <a href="<%= url_for :action => :show, :id => @client.object %>" class="ui-btn-left" data-icon="back" data-direction="reverse">
+      Cancel
+    </a>
+    <a href="<%= url_for :action => :delete, :id => @client.object %>" class="ui-btn-right" data-icon="delete" data-direction="reverse">
+      Delete
+    </a>
+  </div>
+
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :update %>">
+      <input type="hidden" name="id" value="<%= @client.object %>"/>
+      
+          <div data-role="fieldcontain">
+            <label for="client[first]" class="fieldLabel">First</label>
+            <input type="text" id="client[first]" name="client[first]" value="<%= @client.first %>" <%= placeholder( "First" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="client[last]" class="fieldLabel">Last</label>
+            <input type="text" id="client[last]" name="client[last]" value="<%= @client.last %>" <%= placeholder( "Last" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="client[phone]" class="fieldLabel">Phone</label>
+            <input type="text" id="client[phone]" name="client[phone]" value="<%= @client.phone %>" <%= placeholder( "Phone" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="client[location]" class="fieldLabel">Location</label>
+            <input type="text" id="client[location]" name="client[location]" value="<%= @client.location %>" <%= placeholder( "Location" ) %> />
+          </div>
+      
+      <input type="submit" value="Update"/>
+    </form>
+  </div>
+
+</div>

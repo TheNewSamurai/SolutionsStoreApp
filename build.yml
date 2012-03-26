@@ -1,0 +1,31 @@
+#sdk: "C:/RhoStudioBeta/ruby/lib/ruby/gems/1.8/gems/rhodes-3.3.3.beta.4"
+sdkversion: "3.3.3"
+name: "SolutionsStoreApp"
+version: 1.0
+vendor: "rhomobile"
+build: "debug"
+bbver: 4.6
+applog: "rholog.txt"
+iphone:
+  configuration: "Release"
+  sdk: "iphonesimulator5.0"
+  provisionprofile: 
+  codesignidentity: 
+  entitlements: 
+  BundleIdentifier: "com.rhomobile.solutionsstore"
+  BundleURLScheme: "solutionsstore"
+wm:
+  sdk: "Windows Mobile 6.5.3 Professional DTK (ARMV4I)"
+wp:
+  productid: "40caf840-4b94-012f-ca2a-00216aab8fda"
+symbian:
+  uid: 3999398272
+android:
+  version: "2.3.3"
+capabilities:
+  - motorola
+  - camera
+extensions:
+  - json
+  - barcode-moto
+sdk: "C:/RhoStudioBeta/ruby/lib/ruby/gems/1.8/gems/rhodes-3.3.3.beta.4.3"

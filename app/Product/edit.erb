@@ -1,0 +1,41 @@
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+    <h1>Edit <%= @product.upc %></h1>
+    <a href="<%= url_for :action => :show, :id => @product.object %>" class="ui-btn-left" data-icon="back" data-direction="reverse">
+      Cancel
+    </a>
+    <a href="<%= url_for :action => :delete, :id => @product.object %>" class="ui-btn-right" data-icon="delete" data-direction="reverse">
+      Delete
+    </a>
+  </div>
+
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :update %>">
+      <input type="hidden" name="id" value="<%= @product.object %>"/>
+      
+          <div data-role="fieldcontain">
+            <label for="product[upc]" class="fieldLabel">Upc</label>
+            <input type="text" id="product[upc]" name="product[upc]" value="<%= @product.upc %>" <%= placeholder( "Upc" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="product[name]" class="fieldLabel">Name</label>
+            <input type="text" id="product[name]" name="product[name]" value="<%= @product.name %>" <%= placeholder( "Name" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="product[model]" class="fieldLabel">Model</label>
+            <input type="text" id="product[model]" name="product[model]" value="<%= @product.model %>" <%= placeholder( "Model" ) %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="product[quantity]" class="fieldLabel">Quantity</label>
+            <input type="text" id="product[quantity]" name="product[quantity]" value="<%= @product.quantity %>" <%= placeholder( "Quantity" ) %> />
+          </div>
+      
+      <input type="submit" value="Update"/>
+    </form>
+  </div>
+
+</div>

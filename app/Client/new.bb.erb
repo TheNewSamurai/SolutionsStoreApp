@@ -1,0 +1,38 @@
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+    <%= link_to "Back", :action => :index %>
+    <h1>New Client</h1>
+  </div>
+
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :create %>">
+      <input type="hidden" name="id" value="<%= @client.object %>"/>
+      <table>
+          
+            <tr>
+                <td class="itemLabel">First: </td>
+                <td class="itemValue"><input type="text" name="client[first]"/></td>
+            </tr>
+          
+            <tr>
+                <td class="itemLabel">Last: </td>
+                <td class="itemValue"><input type="text" name="client[last]"/></td>
+            </tr>
+          
+            <tr>
+                <td class="itemLabel">Phone: </td>
+                <td class="itemValue"><input type="text" name="client[phone]"/></td>
+            </tr>
+          
+            <tr>
+                <td class="itemLabel">Location: </td>
+                <td class="itemValue"><input type="text" name="client[location]"/></td>
+            </tr>
+          
+      </table>
+      <input type="submit" value="Create"/>
+    </form>
+  </div>
+
+</div>
