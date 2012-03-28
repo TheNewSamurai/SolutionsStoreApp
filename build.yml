@@ -23,8 +23,9 @@ symbian:
 android:
   version: "2.3.3"
 capabilities:
-  - motorola
+  - gps
   - camera
+  - motorola
 extensions:
   - json
   - barcode-moto
