@@ -8,6 +8,11 @@ class AppApplication < Rho::RhoApplication
     #To remove default toolbar uncomment next line:
     #@@toolbar = nil
     super
+    
+    #def on_activate_app
+      #start geolocation
+    #  GeoLocation.set_notification("/app/Partner/geo_callback", "")
+    #end
 
     # Uncomment to set sync notification callback to /app/Settings/sync_notify.
     # SyncEngine::set_objectnotify_url("/app/Settings/sync_notify")

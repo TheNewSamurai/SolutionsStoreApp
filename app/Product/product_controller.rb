@@ -108,7 +108,7 @@ class ProductController < Rho::RhoController
         #WebView.navigate url_for(:action => :index)
         Alert.show_popup(
           :message => 'No Matching Barcode',
-          :title => 'ERROR',
+          :title => barcode,
           :buttons => ['ok'],
           :callback => url_for(:action => :index_callback)
           )

@@ -1,0 +1,63 @@
+<script src="/public/jquery/jquery-1.6.2.min.js" type="text/javascript"></script>
+<script src="/public/js/rhogeolocation.js" type="text/javascript"></script>
+<script src="/public/js/rhogeolocation-wm.js" type="text/javascript"></script>
+
+<div data-role="page" data-add-back-btn="false">
+
+  <div data-role="header" data-position="inline">
+    <h1><%= @partner.first %></h1>
+    <a href="<%= url_for :action => :index %>" class="ui-btn-left" data-icon="arrow-l" data-direction="reverse">
+      Back
+    </a>
+    <a href="<%= url_for :action => :edit, :id => @partner.object %>" class="ui-btn-right" data-icon="star">
+      Edit
+    </a>
+  </div>
+
+  <div data-role="content">
+    <ul data-role="listview">
+      
+          <li>
+            <div class="itemLabel">First</div>
+            <div class="itemValue"><%= @partner.first %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">Last</div>
+            <div class="itemValue"><%= @partner.last %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">Address</div>
+            <div class="itemValue"><%= @partner.address %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">City</div>
+            <div class="itemValue"><%= @partner.city %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">State</div>
+            <div class="itemValue"><%= @partner.state %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">Lat</div>
+            <div class="itemValue"><%= @partner.lat %></div>
+          </li>
+      
+          <li>
+            <div class="itemLabel">Long</div>
+            <div class="itemValue"><%= @partner.long %></div>
+          </li>
+          
+          <li>
+            <!--<div class="itemLabel">Show on Map</div>-->
+            <a href="<%= url_for :action => :partner_location, :id => @partner.object %>">Show on Map</a>
+          </li>
+      
+    </ul>
+  </div>
+
+</div>

@@ -1,7 +1,7 @@
 <div data-role="page">
 
 	<div data-role="header" data-position="inline">
-    <h1>Clients</h1>
+    <h1>Partners</h1>
     <a href="<%= Rho::RhoConfig.start_path %>" class="ui-btn-left" data-icon="home" data-direction="reverse" <%= "data-ajax='false'" if is_bb6 %>>
       Home
     </a>
@@ -12,12 +12,12 @@
 
   <div data-role="content">
     <ul data-role="listview">
-      <li><a href="Client/location">Show your current location</a></li>
-      <% @clients.each do |client| %>
-      
+      <li><a href="<%= url_for :action => :show_location %>">Show your current location</a></li>
+      <% @partners.each do |partner| %>
+        
           <li>
-            <a href="<%= url_for :action => :show, :id => client.object %>">
-              <%= client.first %>
+            <a href="<%= url_for :action => :show, :id => partner.object %>">
+              <%= partner.first %>
             </a>
           </li>
       

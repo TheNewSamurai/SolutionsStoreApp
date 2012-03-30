@@ -6,5 +6,4 @@ class Product
   # Uncomment the following line to enable sync with Product.
   enable :sync
 
-  #add model specifc code here
 end
