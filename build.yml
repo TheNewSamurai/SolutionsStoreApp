@@ -29,4 +29,6 @@ capabilities:
 extensions:
   - json
   - barcode-moto
-sdk: "C:/RhoStudioBeta/ruby/lib/ruby/gems/1.8/gems/rhodes-3.3.3.beta.4.3"
+  - rexml
+  - set
+sdk: "C:/RhoStudioBeta/ruby/lib/ruby/gems/1.8/gems/rhodes-3.3.3.beta.5.3"

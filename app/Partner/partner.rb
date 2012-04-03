@@ -5,5 +5,4 @@ class Partner
 
   # Uncomment the following line to enable sync with Partner.
   # enable :sync
-
 end

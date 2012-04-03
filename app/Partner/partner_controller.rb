@@ -1,7 +1,4 @@
 require 'rho/rhocontroller'
-#require 'open-uri'
-#require 'net/http'
-#require 'rexml/document'
 require 'helpers/browser_helper'
 
 class PartnerController < Rho::RhoController
@@ -43,7 +40,7 @@ class PartnerController < Rho::RhoController
   def create
     @partner = Partner.create(@params['partner'])
     get_geolocation(@partner)
-    redirect :action => :index
+    #redirect :action => :index
   end
 
   # POST /Partner/{1}/update
@@ -60,43 +57,29 @@ class PartnerController < Rho::RhoController
     redirect :action => :index  
   end
   
-  #def preload_map
-  #  options = { :engine => 'OSM',
-  #           :map_type => 'roadmap',
-  #           :top_latitude => 60.1,
-  #           :left_longitude => 30.0,
-  #           :bottom_latitude => 59.7,
-  #           :right_longitude => 30.6,
-  #           :min_zoom => 9,
-  #           :max_zoom => 11
-  #         }
-  #  total_tiles_for_preload_count = MapView.preload_map_tiles(options, url_for(:action => :preload_callback))    
-  #  redirect :action => :index
-  #end
-  
   def preload_callback
     puts '@@@@@@@@@      Preload Callback       STATUS['+@params['status']+']   PROGRESS['+@params['progress']+']'
   end
   
   #Setting up the map for GeoLocation
   def partner_location
-    #@partner = partner.find(@params['id'])
+    @partner = Partner.find(@params['id'])
       
     #Using Open Source Maps (This is used by MapQuest)
-    #map_params = {
-    #  :provider => 'OSM', 
-    #  :settings => {:map_type => "roadmap", :region => [@partner.lat,@partner.long, 0.2, 0.2],
-    #                :zoom_enabled => true, :scroll_enabled => true, :shows_user_location => false}, 
-    #  :annotations => [{:latitude => @partner.lat, :longitude => @partner.long, :title => "PRELOAD MARKER"}]
-    #}
+    map_params = {
+      :provider => 'OSM', 
+      :settings => {:map_type => "roadmap", :region => [@partner.lat,@partner.long, 0.2, 0.2],
+                    :zoom_enabled => true, :scroll_enabled => true, :shows_user_location => false}, 
+      :annotations => [{:latitude => @partner.lat, :longitude => @partner.long, :title => "PRELOAD MARKER"}]
+    }
     
     #Using Google Static API maps
-    map_params = {
-      :provider => 'RhoGoogle', 
-      :settings => {:map_type => "roadmap", :region => [40.994705,-77.604546, 0.2, 0.2],
-                    :zoom_enabled => true, :scroll_enabled => true, :shows_user_location => true}, 
-      :annotations => [{:latitude => 40.994705, :longitude => -77.604546, :title => "PRELOAD MARKER"}]
-    }
+    #map_params = {
+    #  :provider => 'RhoGoogle', 
+    #  :settings => {:map_type => "roadmap", :region => [40.994705,-77.604546, 0.2, 0.2],
+    #                :zoom_enabled => true, :scroll_enabled => true, :shows_user_location => true}, 
+    #  :annotations => [{:latitude => 40.994705, :longitude => -77.604546, :title => "PRELOAD MARKER"}]
+    #}
     MapView.create map_params
     
     render :back => url_for( :action => :index)
@@ -154,29 +137,58 @@ class PartnerController < Rho::RhoController
   end
   
   def get_geolocation(tmpPart)
-    
+    $tempGlob = tmpPart
     #Properly format the Address 
     while tmpPart.address.include? ' '
-      tmpAddr.sub!(' ','+')
+      tmpPart.address.sub!(' ','+')
     end
+    
+    Rho::AsyncHttp.get(
+      :url => "http://where.yahooapis.com/geocode?q=#{tmpPart.address},+#{tmpPart.city},+#{tmpPart.state}",
+      :callback => url_for(:action => :yahoo_callback)
+    )
       
-    parsedXML = Net::HTTP.get(URI.parse("http://where.yahooapis.com/geocode?q=#{tmpPart.address},+#{tmpPart.city},+#{tmpPart.state}"))  #Sends the GET request to where.yahoo
-    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ \n" + parsedXML
+    puts "END"
+    redirect :action => :index
+  end
+  
+  # Need to pass partner params into here
+  def yahoo_callback
+    @partner = Partner.find($tempGlob.object)
+    
+    if @params['status'] != 'ok'
+      puts @params
+    else
+      @@get_result = @params["body"]
       
-    doc = REXML::Document.new(parsedXML)
-    @lat = []
-    @long = []
+        require 'rexml/document'
+
+      doc = REXML::Document.new(@@get_result)
+      @lat = ""
+      @long = ""
       
-    doc.elements.each('ResultSet/Result/offsetlat') do |ele|  #Pass the macthing XML portion
-      @lat << ele.text                    #Add the latitude XML element into Array
-      puts @lat
-      @partner.lat = @lat
-    end
+      doc.elements.each('ResultSet/Error') do |ele|
+        @temp = ele.text
+        if @temp.to_i != 0
+          Alert.show_popup(
+              :message => 'Error with Address can not get GPS coordinates',
+              :title => 'GeoLocation Error',
+              :buttons => ['ok'],
+              :callback => url_for(:action => :index)
+          )
+        end
+      end
+        
+      doc.elements.each('ResultSet/Result/offsetlat') do |ele|  #Pass the macthing XML portion
+        @lat = ele.text                    #Add the latitude XML element into Array
+        puts @lat
+      end
       
-    doc.elements.each('ResultSet/Result/offsetlon') do |ele|  #Pass the macthing XML portion
-      @long << ele.text                   #Add the longitude XML element into Array
-      puts @long
-      @partner.long = @long
+      doc.elements.each('ResultSet/Result/offsetlon') do |ele|  #Pass the macthing XML portion
+        @long = ele.text                   #Add the longitude XML element into Array
+        puts @long
+      end
+      @partner.update_attributes("lat" => @lat, "long" => @long)
     end
   end
   
