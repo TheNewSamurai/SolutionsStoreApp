@@ -1,0 +1,4 @@
+[
+{"upc": "07471135108", "name": "Swingline", "model" : "Staples", "quantity": "1", "image" : ""},
+{"upc": "9612019907261715059323", "name": "Ground", "model" : "Package", "quantity": "19", "image" : ""},
+]

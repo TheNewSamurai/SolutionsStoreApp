@@ -1,11 +1,20 @@
 This application is to demonstrate the Motorola Device Capabilities enabled through RhoElements/Rhodes
 
-Currently Barcode scanning and Sync is working on the ET1
+The javascript library currently is jQueryMobile but considerations maybe used on Windows Mobile devices in order to
+make a lighter application. Another option might be jqMobi.
+
+List of Device Capabilities Used
+-Scanner
+-Camera
+-GPS (Poor Performance)
 
 Products:
-	-Scan to Search: This will turn on the camera for scanning, if a barcode matches a db entry the entry will be shown.
+	-Scanner is used to search through entries for a match.
+	-Camera takes and stores pictures of an item.
+	-Currently sync is disabled uncomment products.rb to enable.
 
 Clients:
 	-Currently sync is disabled uncomment clients.rb to enable.
-
-Same code will be tested on an MC65
+	
+Tested Devices: ET1, MC55, MC75
+Tested w/ Issues: MC65 (Camera not initiating)

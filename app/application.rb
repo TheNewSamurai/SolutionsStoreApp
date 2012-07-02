@@ -17,5 +17,21 @@ class AppApplication < Rho::RhoApplication
     # Uncomment to set sync notification callback to /app/Settings/sync_notify.
     # SyncEngine::set_objectnotify_url("/app/Settings/sync_notify")
     SyncEngine.set_notification(-1, "/app/Settings/sync_notify", '')
+    
+    seedDb = Product.find(:all)    
+    if seedDb.empty?
+      fileName = File.join(Rho::RhoApplication::get_base_app_path(), '/public/Product.txt')
+      lines = File.read(fileName)
+      jsonContent = Rho::JSON.parse(lines)
+      jsonContent.each {
+      |json|
+        Product.create("upc" => json['upc'], "name" => json['name'], "model" => json['model'], "quantity" => json['quantity'], "image" => json['image'])
+      }
+      #finished creating database for real application you may
+      # want to display a loading page to indicate to the user 
+      # something is going on
+    else 
+      #The catalog has been loaded already there is nothing to do
+    end
   end
 end

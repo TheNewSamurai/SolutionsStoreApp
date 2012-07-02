@@ -56,7 +56,12 @@ class PartnerController < Rho::RhoController
     @partner.destroy if @partner
     redirect :action => :index  
   end
-  
+ 
+ ### GEOLOCATION METHODS
+  ## Working: 
+  ## Partial: MC65, ET1 - Both need GPS launched from outside of application.
+  ## Failing: 
+   
   def preload_callback
     puts '@@@@@@@@@      Preload Callback       STATUS['+@params['status']+']   PROGRESS['+@params['progress']+']'
   end
@@ -97,22 +102,25 @@ class PartnerController < Rho::RhoController
     
     if GeoLocation.known_position?
       puts "@@@@@@@@@@@@@@@@@ GPS COORDS @@@@@@@@@@@@@@@@ " + GeoLocation.latitude.to_s + " " + GeoLocation.longitude.to_s
+      
+      map_params = {
+        :provider => 'OSM', 
+        :settings => {:map_type => "roadmap", :region => [GeoLocation.latitude,GeoLocation.longitude, 0.2, 0.2],
+                      :zoom_enabled => true, :scroll_enabled => true, :shows_user_location => true}, 
+        :annotations => [{:latitude => GeoLocation.latitude, :longitude => GeoLocation.longitude, :title => "Your Location"}]
+      }
+      MapView.create map_params
+      
     else
-      Alert.show_popup(
-          :message => 'Awating GPS Coordinates please wait a minute.',
-          :title => 'GPS Coordinates',
-          :buttons => ['ok'],
-          :callback => url_for(:action => :partner_callback)
-      )
+      #puts "@@@@@@@@@@@@@@@@@ GPS COORDS @@@@@@@@@@@@@@@@ " + GeoLocation.latitude.to_s + " " + GeoLocation.longitude.to_s
+      GeoLocation.set_notification( url_for(:action => :geo_callback), "")
+      #Alert.show_popup(
+      #    :message => 'Awating GPS Coordinates please wait a minute.',
+      #    :title => 'GPS Coordinates',
+      #    :buttons => ['ok'],
+      #    :callback => url_for(:action => :partner_callback)
+      #)
     end
-    
-    map_params = {
-      :provider => 'OSM', 
-      :settings => {:map_type => "roadmap", :region => [GeoLocation.latitude,GeoLocation.longitude, 0.2, 0.2],
-                    :zoom_enabled => true, :scroll_enabled => true, :shows_user_location => true}, 
-      :annotations => [{:latitude => GeoLocation.latitude, :longitude => GeoLocation.longitude, :title => "Your Location"}]
-    }
-    MapView.create map_params
     
     redirect :action => :index
   end
@@ -127,13 +135,19 @@ class PartnerController < Rho::RhoController
   end
   
   def geo_callback
-    puts "GEO_CALLBACK :: #{@params}"
+    puts "GEO_CALLBACK : #{@params}"
     if @params['known_position'].to_i != 0 && @params['status'] == 'ok'
+      GeoLocation.set_notification '', '', 2
       WebView.navigate url_for(:action => :show_location)
     end
     #if @params['available'].to_i == 0 || @params['status'] == 'ok'
     #  WebView.navigate url_for(:action => :show_location_error)
     #end
+    if WebView.current_location !~ '/app/index.erb'
+      puts "Stopping geo location since we are away of geo page: " + WebView.current_location
+      GeoLocation.turnoff
+      return
+    end
   end
   
   def get_geolocation(tmpPart)

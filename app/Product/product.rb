@@ -4,6 +4,6 @@ class Product
   include Rhom::PropertyBag
 
   # Uncomment the following line to enable sync with Product.
-  enable :sync
+  # enable :sync
 
 end

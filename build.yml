@@ -1,34 +1,32 @@
-#sdk: "C:/RhoStudioBeta/ruby/lib/ruby/gems/1.8/gems/rhodes-3.3.3.beta.4"
-sdkversion: "3.3.3"
 name: "SolutionsStoreApp"
-version: 1.0
-vendor: "rhomobile"
-build: "debug"
-bbver: 4.6
-applog: "rholog.txt"
-iphone:
-  configuration: "Release"
-  sdk: "iphonesimulator5.0"
-  provisionprofile: 
-  codesignidentity: 
-  entitlements: 
-  BundleIdentifier: "com.rhomobile.solutionsstore"
-  BundleURLScheme: "solutionsstore"
-wm:
-  sdk: "Windows Mobile 6.5.3 Professional DTK (ARMV4I)"
-wp:
-  productid: "40caf840-4b94-012f-ca2a-00216aab8fda"
-symbian:
-  uid: 3999398272
-android:
-  version: "2.3.3"
 capabilities:
-  - gps
   - camera
-  - motorola
+  - gps
 extensions:
   - json
-  - barcode-moto
   - rexml
   - set
-sdk: "C:/RhoStudioBeta/ruby/lib/ruby/gems/1.8/gems/rhodes-3.3.3.beta.5.3"
+  - activesupport
+app_type: "rhoelements"
+bbver: "4.6"
+wp:
+  productid: "aba07d00-704a-012f-ca32-00216aab8fda"
+wm:
+  sdk: "Windows Mobile 6.5.3 Professional DTK (ARMV4I)"
+android:
+  version: "2.3.3"
+build: "debug"
+applog: "rholog.txt"
+version: "1.0"
+symbian:
+  uid: "0xe6142d7c"
+sdkversion: "3.3.3"
+vendor: "rhomobile"
+iphone:
+  provisionprofile: 
+  BundleURLScheme: "solutionsstoreapp"
+  BundleIdentifier: "com.rhomobile.solutionsstoreapp"
+  sdk: "iphonesimulator5.0"
+  codesignidentity: 
+  entitlements: 
+  configuration: "Release"

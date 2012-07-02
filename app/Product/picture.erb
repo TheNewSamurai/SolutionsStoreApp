@@ -1,0 +1,21 @@
+<div data-role="page" data-add-back-btn="false">
+
+  <div data-role="header" data-position="inline">
+    <h1>TEST</h1>
+    <a href="<%= url_for :action => :show, :id => @product.object %>" class="ui-btn-left" data-icon="arrow-l" data-direction="reverse">
+      Back
+    </a>
+    <% if System::get_property('has_camera') %>
+      <a href="<%= url_for :action => :display_picture %>" class="ui-btn-right" data-icon="plus">
+        Take Pic
+      </a>
+    <% end %>
+  </div>
+    
+      <div data-role="content">
+        <ul data-role="listview">
+          <img id="picture" src="<%= Rho::RhoApplication::get_blob_path(@product.image) %>" onerror="this.src='/public/images/cancel.png';" style="max-width:320px; max-height:240px" />
+        </ul>
+      </div>
+
+</div>

@@ -69,7 +69,7 @@ class SettingsController < Rho::RhoController
   end
   
   def do_sync
-    SyncEngine.dosync
+    SyncEngine.dosync(false,":sync_changes => true") #This causes the sync to update with whatever items you've added
     @msg =  "Sync has been triggered."
     redirect :action => :index, :query => {:msg => @msg}
   end
@@ -94,6 +94,11 @@ class SettingsController < Rho::RhoController
       if @params['server_errors'] && @params['server_errors']['update-error']
         SyncEngine.on_sync_update_error(
           @params['source_name'], @params['server_errors']['update-error'], :retry )
+      end
+      
+      if @params['server_errors'] && @params['server_errors']['delete-error']
+        SyncEngine.on_sync_delete_error(
+          @params['source_name'], @params['server_errors']['delete-error'], :retry )
       end
       
       err_code = @params['error_code'].to_i

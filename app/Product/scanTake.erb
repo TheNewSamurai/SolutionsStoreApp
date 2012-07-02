@@ -1,0 +1,17 @@
+<META HTTP-Equiv="scanner" Content="enumerate">
+
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+    <h1>Products</h1>
+    <a href="<%= url_for :action => :index %>" class="ui-btn-left" data-icon="arrow-l" data-direction="reverse" <%= "data-ajax='false'" if is_bb6 %>>
+      Back
+    </a>
+  </div>
+
+  <div data-role="content">
+    <h1>Press Trigger to start scanning</h1>
+    <input type="text" id="sku" type="sku"></input>
+  </div>
+
+</div>

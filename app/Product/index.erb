@@ -12,7 +12,12 @@
 
   <div data-role="content">
     <ul data-role="listview">
-      <li><a href="Product\scan">Scan to Search</a></li>
+      <li><a href="Product\scanTake">Scan to Search</a></li>
+      
+      <% if System::get_property('has_camera') %>
+      <li><a href="<%= url_for :action => :detect_camera %>">Camera Check</a></li>
+      <% end %>
+      <!--<li><a href="Product\picture">See Product Picture</a></li>-->
       <!--<li><a href="<%= url_for :action => :define_scanner %>">Scan to Search</a></li>-->
       <% @products.each do |product| %>
         <li>
