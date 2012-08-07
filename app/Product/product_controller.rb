@@ -58,7 +58,7 @@ class ProductController < Rho::RhoController
   end
   
  ### SCANNING METHODS
-  ## Working: MC75, MC65, ET1 - Currently use trigger prefer auto start.
+  ## Working: MC75A, MC65, ET1 - Currently use trigger prefer auto start.
   ## Partial: 
   ## Failing: 
   
@@ -136,8 +136,8 @@ class ProductController < Rho::RhoController
   end
   
  ### CAMERA METHODS
-  ## Working: ET1.
-  ## Partial: MC75, MC55 - Camera starts but data is not passed.
+  ## Working: ET1, MC75A
+  ## Partial: MC55 - Camera starts but data is not passed.
   ## Failing: MC65 - Camera doesn't startup.
   
   # GET /Product/{1}/picture
@@ -192,12 +192,12 @@ class ProductController < Rho::RhoController
       #puts "!~~~!~!~!~!~!~!~!~!~!~!~!~! #{temp}"
 
       #$placehold.update_attributes({"image" => "data:image/jpeg;base64," + temp.to_s })
-      #$placehold.update_attributes({"image" => @params['image_uri']})
+      $placehold.update_attributes({"image" => @params['image_uri']})
       #puts "CHECK UPDATE!!!!!!! #{$placehold}"
     else
       Alert.show_popup(
         :message => @params['status'],
-        :title => 'NO CAMERA',
+        :title => 'ERROR',
         :buttons => ['ok'],
         :callback => url_for(:action => :index_callback)
       )
