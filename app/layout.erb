@@ -19,11 +19,13 @@
     <% end %>
 
     <% if System::get_property('platform') == 'APPLE' || System::get_property('platform') == 'ANDROID' || System::get_property('platform') == 'WP7' || is_bb6 || System::get_property('webview_framework') =~ /^WEBKIT/ %>
-        <script src="/public/jquery/jquery-1.6.4.min.js" type="text/javascript"></script>
+        <script src="/public/jquery/jquery-1.7.1.js" type="text/javascript"></script>
         <script src="/public/jquery/jquery.json-2.3.min.js" type="text/javascript"></script>
         <script src="/public/js/rhogeolocation.js" type="text/javascript"></script>
 
-        <link rel="stylesheet" href="/public/jqmobile/jquery.mobile-1.0.1.min.css">
+        <link rel="stylesheet" href="/public/jqmobile/jquery.mobile.css">
+        <link rel="stylesheet" href="/public/jqmobile/jquery.mobile.grids.collapsible.css">
+        <link rel="stylesheet" href="/public/jqmobile/jquery.mobile.splitview.css">
         <link rel="stylesheet" href="/public/css/jqmobile-patch.css">
         <% if System::get_property('platform') == 'APPLE' %>
             <link href="/public/jqmobile/jquery-mobile-iphone.css" type="text/css" rel="stylesheet"/>
@@ -53,8 +55,11 @@
         <% if System::get_property('platform') == 'WP7' %>
           <script type="text/javascript" charset="utf-8" src="/public/js/jquery-wp7-patch.js"></script>
         <% end %>
-        <script type="text/javascript" charset="utf-8" src="/public/jqmobile/jquery.mobile-1.0.1.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/public/jqmobile/jquery.mobile.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/public/jqmobile/jquery.mobile.splitview.js"></script>
         <script type="text/javascript" charset="utf-8" src="/public/js/jqmobile-patch.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/public/js/iscroll.js"></script>
+        <script type="text/javascript" charset="utf-8" src="/public/js/iscroll-wrapper.js"></script>
 
     <% end %>
 

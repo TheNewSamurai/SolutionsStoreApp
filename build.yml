@@ -1,7 +1,6 @@
 name: "SolutionsStoreApp"
 capabilities:
   - camera
-  - gps
 extensions:
   - json
   - rexml

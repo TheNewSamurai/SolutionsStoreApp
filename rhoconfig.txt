@@ -47,7 +47,7 @@ LastVisitedPage = ''
 
 # sync server url, typically this will look like 'http://<hostname>:<port>/application'
 # for example: 'http://localhost:9292/application'
-# syncserver = 'http://127.0.0.1:9292/application'
+syncserver = ''
 #syncserver = 'http://rhohub-thenoobsamurai-c7a1bc0a.rhosync.com/application'
 
 # geo location inactivity timeout (in seconds)
