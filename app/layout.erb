@@ -24,8 +24,6 @@
         <script src="/public/js/rhogeolocation.js" type="text/javascript"></script>
 
         <link rel="stylesheet" href="/public/jqmobile/jquery.mobile.css">
-        <link rel="stylesheet" href="/public/jqmobile/jquery.mobile.grids.collapsible.css">
-        <link rel="stylesheet" href="/public/jqmobile/jquery.mobile.splitview.css">
         <link rel="stylesheet" href="/public/css/jqmobile-patch.css">
         <% if System::get_property('platform') == 'APPLE' %>
             <link href="/public/jqmobile/jquery-mobile-iphone.css" type="text/css" rel="stylesheet"/>
@@ -56,10 +54,7 @@
           <script type="text/javascript" charset="utf-8" src="/public/js/jquery-wp7-patch.js"></script>
         <% end %>
         <script type="text/javascript" charset="utf-8" src="/public/jqmobile/jquery.mobile.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/public/jqmobile/jquery.mobile.splitview.js"></script>
         <script type="text/javascript" charset="utf-8" src="/public/js/jqmobile-patch.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/public/js/iscroll.js"></script>
-        <script type="text/javascript" charset="utf-8" src="/public/js/iscroll-wrapper.js"></script>
 
     <% end %>
 
@@ -87,9 +82,12 @@
 <% elsif System::get_property('platform') == 'WP7' %>
 	onload="wp7_change_forms_action_to_get()"
 <% end %>
-    data-platform="<%= System::get_property('platform') %>"
-	>
+    data-platform="<%= System::get_property('platform') %>" >
+    
     <%= @content %>
+
 </body>
+
+
 
 </html>
