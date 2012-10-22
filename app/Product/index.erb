@@ -1,6 +1,4 @@
-<div data-role="panel" data-id="menu" data-hash="crumbs" data-context="a#default" id="paneled">
-
-  <div data-role="page" id="main" data-hash="false">
+<div data-role="page" id="main" data-hash="false">
   
   	<div data-role="header" data-position="inline">
       <h1>Products</h1>
@@ -16,11 +14,6 @@
       <ul data-role="listview">
         <li><a href="Product\scanTake">Scan to Search</a></li>
         
-        <% if System::get_property('has_camera') %>
-        <li><a href="<%= url_for :action => :detect_camera %>">Camera Check</a></li>
-        <% end %>
-        <!--<li><a href="Product\picture">See Product Picture</a></li>-->
-        <!--<li><a href="<%= url_for :action => :define_scanner %>">Scan to Search</a></li>-->
         <% @products.each do |product| %>
           <li>
               <a href="<%= url_for :action => :show, :id => product.object %>">
@@ -31,7 +24,13 @@
         <% end %>
       </ul>
     </div>
+    
+    <div data-role="footer" data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="<%= url_for :controller => :Product, :action => :scanTake %>">Scan</a></li>
+        </ul>
+      </div>
+    </div>
   
-  </div>
-
 </div>

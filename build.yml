@@ -1,6 +1,8 @@
 name: "SolutionsStoreApp"
 capabilities:
   - camera
+  - non_motorola_device
+  - motorola_browser
 extensions:
   - json
   - rexml
