@@ -11,24 +11,50 @@
   	</div>
   
     <div data-role="content">
-      <ul data-role="listview">
-        <li><a href="Product\scanTake">Scan to Search</a></li>
+    
+      <div class="ui-grid-a" align="center">
+
         
+        
+      
+<!--      <ul data-role="listview">
+        <li><a href="Product\scanTake">Scan to Search</a></li> -->
+        
+        
+        
+        <% toggle = 1 %>
         <% @products.each do |product| %>
-          <li>
-              <a href="<%= url_for :action => :show, :id => product.object %>">
-                <%= product.name %>
-              </a>
-            </li>
-        
+          <% if toggle == 1 %>
+            <div class="ui-block-a">
+                <div data-role="fieldcontain">
+                <a href="<%= url_for :action => :show, :id => product.object %>">
+                  <div><%= product.name %></div>
+                  <img id="picture" src="<%= Rho::RhoApplication::get_blob_path(product.image) %>" onerror="this.src='/public/images/noImage.jpg';" style="max-width:100px; max-height:100px" />
+                </a>
+                </div>
+            </div>
+          <% else %>
+            <div class="ui-block-b">
+                <div data-role="fieldcontain">
+                <a href="<%= url_for :action => :show, :id => product.object %>">
+                  <div><%= product.name %></div>
+                  <img id="picture" src="<%= Rho::RhoApplication::get_blob_path(product.image) %>" onerror="this.src='/public/images/noImage.jpg';" style="max-width:100px; max-height:100px" />
+                </a>
+                </div>
+            </div>
+          <% end %>
+          <% toggle = -toggle %>
         <% end %>
-      </ul>
+        
+        </div>
+
+<!--      </ul> -->
     </div>
     
     <div data-role="footer" data-position="fixed">
       <div data-role="navbar">
         <ul>
-          <li><a href="<%= url_for :controller => :Product, :action => :scanTake %>">Scan</a></li>
+          <li><a href="<%= url_for :controller => :Product, :action => :scanTake %>" data-direction="reverse" >Scan to Search</a></li>
         </ul>
       </div>
     </div>

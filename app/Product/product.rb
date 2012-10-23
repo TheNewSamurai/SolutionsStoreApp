@@ -6,4 +6,5 @@ class Product
   # Uncomment the following line to enable sync with Product.
   # enable :sync
 
+  property :image, :blob
 end

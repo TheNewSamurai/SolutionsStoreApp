@@ -13,6 +13,10 @@ class ProductController < Rho::RhoController
 
   # GET /Product/{1}
   def show
+    
+    #Add picture dectection logic here
+    #Prompt to take picture if one isn't present
+    
     @product = Product.find(@params['id'])
     if @product
       render :action => :show, :back => url_for(:action => :index)
