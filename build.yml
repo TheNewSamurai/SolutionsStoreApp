@@ -21,14 +21,14 @@ applog: "rholog.txt"
 version: "1.0"
 symbian:
   uid: "0xe6142d7c"
-sdkversion: "3.3.3"
+sdkversion: "3.4.0"
 vendor: "rhomobile"
 iphone:
-  provisionprofile: 
+  provisionprofile: D7102EF2-33D7-4007-841B-F4CF6F703A60
   BundleURLScheme: "solutionsstoreapp"
   BundleIdentifier: "com.rhomobile.solutionsstoreapp"
   sdk: "iphonesimulator5.1"
-  codesignidentity: 
-  entitlements: 
+  codesignidentity: "iPhone Developer: Derek Warren (Z8283W4V6Q)"
+  entitlements: ""
   configuration: "Release"
-  emulatortarget: "ipad"
+  #emulatortarget: "ipad"

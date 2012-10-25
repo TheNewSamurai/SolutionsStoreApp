@@ -6,7 +6,7 @@
       Back
     </a>
     <% if System::get_property('has_camera') %>
-      <a href="<%= url_for :action => :display_picture %>" class="ui-btn-right" data-icon="plus">
+      <a href="<%= url_for :action => :camera_picture, :id => @product.object %>" class="ui-btn-right" data-icon="plus">
         Take Pic
       </a>
     <% end %>
