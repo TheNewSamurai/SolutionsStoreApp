@@ -47,4 +47,16 @@
     </ul>
   </div>
 
+  <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li>
+              <a href="<%= url_for :action => :camera_picture, :id => @product.object %>" id="footLink">
+              <span class="ui-btn-footer">Take Picture</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
 </div>
