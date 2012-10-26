@@ -192,7 +192,7 @@ class ProductController < Rho::RhoController
     # When picture was taken successfully update the product w/ image
     if @params['status'] == 'ok'
       puts "ENTER CALLBACK WITH THIS PRODUCT ID!!!!!!!!!!!! #{@product}"
-      
+      puts "ENTER CALLBACK WITH THIS PRODUCT ID!!!!!!!!!!!! #{@params['image_uri']}"
       #This is taking the picture and encoding it in base64 to display on device and upload if needed.
       #The io portion is taking the opened inmage and converting it to a String.
       #temp = Base64.encode64(open(@params['image_uri']) {|io| io.read})

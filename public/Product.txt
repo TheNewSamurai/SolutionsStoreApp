@@ -1,8 +1,8 @@
 [
-{"upc": "07471135108", "name": "Swingline", "model" : "Staples", "quantity": "1", "image" : ""},
-{"upc": "9612019907261715059323", "name": "Ground", "model" : "Package", "quantity": "19", "image" : ""},
-{"upc": "010101", "name": "Laptop", "model" : "HP", "quantity": "1", "image" : ""},
-{"upc": "111111", "name": "Test", "model" : "Hard", "quantity": "10", "image" : ""},
+{"upc": "074711351089", "name": "Swingline", "model" : "Staples", "quantity": "1", "image" : ""},
+{"upc": "961201", "name": "ES400", "model" : "Computer", "quantity": "19", "image" : ""},
+{"upc": "010101", "name": "WT4000", "model" : "Wearable", "quantity": "1", "image" : ""},
+{"upc": "111111", "name": "MC55", "model" : "Computer", "quantity": "10", "image" : ""},
 {"upc": "222222", "name": "Headset", "model" : "Ear", "quantity": "15", "image" : ""},
 {"upc": "333333", "name": "Mouse", "model" : "Mighty", "quantity": "20", "image" : ""},
 ]

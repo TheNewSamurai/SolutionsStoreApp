@@ -34,12 +34,15 @@
           </li>
           
 
-          <li>
+          <!--<li>
             <a href="<%= url_for :action => :picture, :id => @product.object %>">
               See Product2 Picture
             </a>
-          </li>
-
+          </li>-->
+          <br>
+          <div align="center">
+            <img id="picture" src="<%= Rho::RhoApplication::get_blob_path(@product.image) %>" onerror="this.src='/public/images/noImage.jpg';" style="max-width:320px; max-height:240px" />
+          </div>
       
     </ul>
   </div>

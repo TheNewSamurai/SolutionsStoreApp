@@ -1,0 +1,10 @@
+/* Make the footers larger */
+#footLink {
+  font-size:200%;
+  line-height:100%;
+}
+
+.ui-btn-footer {
+  font-size:200%;
+  vertical-align:bottom;
+}

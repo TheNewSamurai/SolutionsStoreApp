@@ -8,6 +8,7 @@ extensions:
   - rexml
   - set
   - activesupport
+  - barcode
 app_type: "rhoelements"
 bbver: "4.6"
 wp:
@@ -27,7 +28,7 @@ iphone:
   provisionprofile: D7102EF2-33D7-4007-841B-F4CF6F703A60
   BundleURLScheme: "solutionsstoreapp"
   BundleIdentifier: "com.rhomobile.solutionsstoreapp"
-  sdk: "iphonesimulator5.1"
+  #sdk: "iphonesimulator5.1"
   codesignidentity: "iPhone Developer: Derek Warren (Z8283W4V6Q)"
   entitlements: ""
   configuration: "Release"

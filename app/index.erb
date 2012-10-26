@@ -1,14 +1,7 @@
-<style>
-  #footLink {
-    font-size:200%;
-    line-height:100%;
-  }
-</style>
-
 <div data-role="page" id="main" data-hash="false" data-url="<%= Rho::RhoConfig.start_path %>/">
 
     <div data-role="header" data-position="inline">
-      <h1>Solutions Store</h1>
+      <div align ="center"><h1>Solutions Store</h1></div>
       <% if SyncEngine::logged_in > 0 %>
       <a href="<%= url_for :controller => :Settings, :action => :do_sync %>" class="ui-btn-left" data-icon="refresh">
         Sync
@@ -31,12 +24,20 @@
     <div data-role="footer" data-position="fixed" data-fullscreen="true">
       <div data-role="navbar">
         <ul>
-          <li><a href="<%= url_for :controller => :Settings, :action => :about %>" id="footLink">About</a></li>
+          <li>
+            <a href="<%= url_for :controller => :Settings, :action => :about %>" id="footLink">
+            <span class="ui-btn-footer">About</span>
+            </a>
+          </li>
           <li>
           <% if SyncEngine::logged_in > 0 %>
-            <a href="<%= url_for :controller => :Settings, :action => :logout %>" id="footLink">Logout</a>
+            <a href="<%= url_for :controller => :Settings, :action => :logout %>" id="footLink">
+            <span class="ui-btn-footer">Logout</span>
+            </a>
           <% else %>
-            <a href="<%= url_for :controller => :Settings, :action => :login %>" id="footLink">Login</a>
+            <a href="<%= url_for :controller => :Settings, :action => :login %>" id="footLink">
+            <span class="ui-btn-footer">Login</span>
+            </a>
           <% end %>
           </li>
         </ul>
