@@ -1,8 +1,25 @@
+sdkversion: "3.5.0"
 name: "SolutionsStoreApp"
-capabilities:
-  - camera
-  - non_motorola_device
-  - motorola_browser
+version: "1.0"
+vendor: "rhomobile"
+build: "debug"
+bbver: "4.6"
+applog: "rholog.txt"
+iphone:
+  provisionprofile: "D7102EF2-33D7-4007-841B-F4CF6F703A60"
+  BundleURLScheme: "solutionsstoreapp"
+  BundleIdentifier: "com.rhomobile.solutionsstoreapp"
+  codesignidentity: "iPhone Developer: Derek Warren (Z8283W4V6Q)"
+#sdk: "iphonesimulator5.1"
+  entitlements: 
+  configuration: "Release"
+wp:
+#emulatortarget: "ipad"
+  productid: "c88a18f0-1fb1-0130-f15d-00216aab8fda"
+symbian:
+  uid: "0xe23a96c7"
+android:
+  version: "2.3.3"
 extensions:
   - json
   - rexml
@@ -10,26 +27,7 @@ extensions:
   - activesupport
   - barcode
 app_type: "rhoelements"
-bbver: "4.6"
-wp:
-  productid: "aba07d00-704a-012f-ca32-00216aab8fda"
-wm:
-  sdk: "Windows Mobile 6.5.3 Professional DTK (ARMV4I)"
-android:
-  version: "2.3.3"
-build: "debug"
-applog: "rholog.txt"
-version: "1.0"
-symbian:
-  uid: "0xe6142d7c"
-sdkversion: "3.4.0"
-vendor: "rhomobile"
-iphone:
-  provisionprofile: D7102EF2-33D7-4007-841B-F4CF6F703A60
-  BundleURLScheme: "solutionsstoreapp"
-  BundleIdentifier: "com.rhomobile.solutionsstoreapp"
-  #sdk: "iphonesimulator5.1"
-  codesignidentity: "iPhone Developer: Derek Warren (Z8283W4V6Q)"
-  entitlements: ""
-  configuration: "Release"
-  #emulatortarget: "ipad"
+capabilities:
+  - camera
+  - non_motorola_device
+  - motorola_browser

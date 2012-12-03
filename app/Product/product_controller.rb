@@ -111,6 +111,7 @@ class ProductController < Rho::RhoController
   def scanTake
     puts "DEVICE NAME !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  #{System.get_property('device_name')}"
     puts "DEVICE PLATFORM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  #{System.get_property('platform')}"
+    #Assuming Windows Platform is a Motorola Device
     if System.get_property('device_name') == 'Motorola Solutions ET1N0' || System.get_property('platform') == 'WINDOWS'
       puts "MOT DEVICE"
       Scanner.enable

@@ -33,12 +33,6 @@
             <div class="itemValue"><%= @product.quantity %></div>
           </li>
           
-
-          <!--<li>
-            <a href="<%= url_for :action => :picture, :id => @product.object %>">
-              See Product2 Picture
-            </a>
-          </li>-->
           <br>
           <div align="center">
             <img id="picture" src="<%= Rho::RhoApplication::get_blob_path(@product.image) %>" onerror="this.src='/public/images/noImage.jpg';" style="max-width:320px; max-height:240px" />
@@ -47,16 +41,18 @@
     </ul>
   </div>
 
-  <div data-role="footer" data-position="fixed">
-        <div data-role="navbar">
-          <ul>
-            <li>
-              <a href="<%= url_for :action => :camera_picture, :id => @product.object %>" id="footLink">
-              <span class="ui-btn-footer">Take Picture</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+    <% if @product.image == "" %>
+    <div data-role="footer" data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li>
+            <a href="<%= url_for :action => :camera_picture, :id => @product.object %>" id="footLink">
+            <span class="ui-btn-footer">Take Picture</span>
+            </a>
+          </li>
+        </ul>
       </div>
+    </div>
+    <% end %>
 
 </div>

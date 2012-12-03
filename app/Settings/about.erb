@@ -6,10 +6,12 @@
  
 	<p>This is the About page for the Solutions Store Application</p>
     
-    <div data-role="footer" data-position="fixed" style="height:5%">
+    <div data-role="footer" data-position="fixed" data-fullscreen="true">
       <div data-role="navbar">
         <ul>
-          <li><a href="<%= Rho::RhoConfig.start_path %>" data-role="button">Home</a></li>
+          <li><a href="<%= Rho::RhoConfig.start_path %>" data-role="button" id="footLink">
+           <span class="ui-btn-footer">Home</span>
+           </a></li>
         </ul>
       </div>
     </div>
